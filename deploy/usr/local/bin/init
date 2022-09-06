@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo
+echo "Welcome to SSH Server!"
+echo "======================"
+cat /etc/os-release | grep -e "^NAME[=].*"
+cat /etc/os-release | grep -e "^VERSION[=].*"
+echo "HOSTNAME=\"$(hostname)\""
+echo  
+
+USERSETUP=/usr/local/bin/usersetup
+if [ -f "$USERSETUP" ];
+then
+    $USERSETUP --uid 1000
+    rm -f $USERSETUP
+fi
+
